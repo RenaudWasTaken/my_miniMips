@@ -30,5 +30,21 @@ namespace my_miniMips
         {
             GReg[29] += offset;
         }
+
+        public int fetch_instruction()
+        {
+            return this._env.RAM[this.PC];
+        }        
+
+        public void run()
+        {
+            int instruction, rs, rt, rd, shamt, funct, opcode, imm, jmp;
+
+            instruction = this.fetch_instruction();
+            new Decoder().decode_instruction(instruction, out opcode,
+                                             out rs, out rt, out rd, out shamt, out funct, out imm, out jmp);
+
+            this.PC += 4;
+        }
     }
 }
