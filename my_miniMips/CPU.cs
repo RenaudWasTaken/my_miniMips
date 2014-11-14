@@ -50,12 +50,17 @@ namespace my_miniMips
         public void run()
         {
             int instruction, rs, rt, rd, shamt, funct, opcode, imm, jmp;
+            Decoder d = new Decoder();
+            while (true)
+            {
+                instruction = this.fetch_instruction();
+                d.decode_instruction(instruction, out opcode,
+                                     out rs, out rt, out rd, out shamt, out funct, out imm, out jmp);
 
-            instruction = this.fetch_instruction();
-            new Decoder().decode_instruction(instruction, out opcode,
-                                             out rs, out rt, out rd, out shamt, out funct, out imm, out jmp);
-
-            this.PC += 4;
+                this.PC += 4;
+                if (PC >= _env.StackLimit)
+                    break;
+            }
         }
     }
 }
