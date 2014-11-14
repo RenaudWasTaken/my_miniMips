@@ -18,10 +18,12 @@ namespace my_miniMips
             operations.Add(8, Addi);
         }
         
-        public int exec(Instruction i)
+        public void exec(Instruction i)
         {
-
-            return 0;
+            if (i.Opcode == 0)
+                this.operations[i.Funct](i);
+            else
+                this.operations[i.Opcode](i);
         }
 
         public void Add(Instruction i)
