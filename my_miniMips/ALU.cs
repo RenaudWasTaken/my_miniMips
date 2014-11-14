@@ -12,10 +12,11 @@ namespace my_miniMips
         public ALU(CPU cpu)
         {
             _cpu = cpu;
-            operations.Add(32, Add);
-            operations.Add(33, Addu);
-            operations.Add(9, Addiu);
-            operations.Add(8, Addi);
+            operations.Add(32, this.Add);
+            operations.Add(33, this.Addu);
+            operations.Add(9 , this.Addiu);
+            operations.Add(8 , this.Addi);
+            operations.Add(12, this.syscall);
         }
         
         public void exec(Instruction i)
@@ -55,7 +56,13 @@ namespace my_miniMips
         {
             _cpu.GReg[i.Rd] = _cpu.GReg[i.Rs] - _cpu.GReg[i.Rt];
         }
-        
-        public 
+
+        public void syscall(Instruction i)
+        {
+            if (this._cpu.GReg[CPU.VAL] == 1)
+                Console.WriteLine("{1}", this._cpu.GReg[CPU.TMP]);
+            else if (this._cpu.GReg[CPU.VAL] == 10)
+                CPU.end = 1;
+        }
     }
 }
