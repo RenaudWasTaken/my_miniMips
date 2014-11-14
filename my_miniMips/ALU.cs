@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 ﻿namespace my_miniMips
 {
@@ -11,6 +11,21 @@ using System;
             _cpu = cpu;
         }
 
+        public void Add(Instruction i)
+        {
+        }
 
+        public void Addi(Instruction i)
+        {
+            
+        }
+
+        public void Addiu(Instruction i)
+        {
+            
+        }
+
+        public void Addu(Instruction i)
+        { }
     }
 }
