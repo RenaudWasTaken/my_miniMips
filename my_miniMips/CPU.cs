@@ -14,12 +14,14 @@ namespace my_miniMips
         public int LO { get; set; }
 
         private readonly Environment _env;
+        private ALU _alu;
 
         public CPU(Environment env)
         {
             GReg = new int[32];
             _env = env;
             GReg[29] = env.StackBase;
+            _alu = new ALU(this);
         }
 
         public int GetSP()
