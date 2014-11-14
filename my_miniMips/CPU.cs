@@ -53,13 +53,19 @@ namespace my_miniMips
         public void run()
         {
             int instruction, rs, rt, rd, shamt, funct, opcode, imm, jmp;
+            int rs_val, rt_val, rd_val;
+
             Decoder d = new Decoder();
+
 
             while (true)
             {
                 instruction = this.fetch_instruction();
                 d.decode_instruction(instruction, out opcode,
                                      out rs, out rt, out rd, out shamt, out funct, out imm, out jmp);
+                rs_val = this.GReg[rs];
+                rt_val = this.GReg[rt];
+                rd_val = this.GReg[rd];
 
                 this.PC += 4;
                 if (PC >= _env.StackLimit)
