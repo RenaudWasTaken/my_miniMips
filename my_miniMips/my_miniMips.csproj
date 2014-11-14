@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryLoader.cs" />
     <Compile Include="CPU.cs" />
     <Compile Include="Environment.cs" />
     <Compile Include="Program.cs" />
