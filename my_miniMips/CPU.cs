@@ -49,11 +49,13 @@ namespace my_miniMips
         public void run()
         {
             Decoder d = new Decoder();
+            ALU a = new ALU(this);
 
             while (true)
             {
                 int instruction = this.fetch_instruction();
-                Instruction ins = d.decode_instruction(instruction);
+                Instruction i = d.decode_instruction(instruction);
+                a.exec(i);
 
                 this.PC += 4;
                 if (PC >= _env.StackLimit)
