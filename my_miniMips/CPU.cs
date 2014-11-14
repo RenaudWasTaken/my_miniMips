@@ -13,12 +13,13 @@ namespace my_miniMips
         public int HI { get; set; }
         public int LO { get; set; }
 
-        private Environment _env;
+        private readonly Environment _env;
 
         public CPU(Environment env)
         {
             GReg = new int[32];
             _env = env;
+            GReg[29] = env.StackBase;
         }
 
         public int GetSP()
@@ -26,9 +27,19 @@ namespace my_miniMips
             return GReg[29];
         }
 
-        public void MoveSP(int offset)
+        public void AddSP(int size)
         {
-            GReg[29] += offset;
+            if (GetSP() - size <= _env.StackLimit)
+                throw new Exception("Stack overflow");
+            GReg[29] -= size;
+        }
+
+        public void SubSP(int size)
+        {
+            if (GetSP() + size > _env.StackBase)
+                throw  new Exception("Stack underflow");
+
+            GReg[29] += size;
         }
 
         public int fetch_instruction()
