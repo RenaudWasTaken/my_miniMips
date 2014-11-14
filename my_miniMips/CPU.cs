@@ -31,6 +31,7 @@ namespace my_miniMips
         {
             if (GetSP() - size <= _env.StackLimit)
                 throw new Exception("Stack overflow");
+
             GReg[29] -= size;
         }
 
