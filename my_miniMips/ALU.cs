@@ -47,6 +47,22 @@ namespace my_miniMips
             _cpu.GReg[i.Rd] = (int) (_cpu.GReg[i.Rs] + (UInt32)_cpu.GReg[i.Rt]);
         }
 
+        public void Sub(Instruction i)
+        {
+            _cpu.GReg[i.Rd] = _cpu.GReg[i.Rs] - _cpu.GReg[i.Rt];
+        }
+
+        public void Subu(Instruction i)
+        {
+            _cpu.GReg[i.Rd] = _cpu.GReg[i.Rs] - _cpu.GReg[i.Rt];
+        }
+
+        public void Beq(Instruction i)
+        {
+            if (_cpu.GReg[i.Rs] == _cpu.GReg[i.Rt])
+                _cpu.PC += 4*i.Imm;
+        }
+
         public void jump(Instruction i)
         {
             int addr = (i.Jmp & 0x03FFFFFF) << 2;
@@ -59,7 +75,7 @@ namespace my_miniMips
         public void syscall(Instruction i)
         {
             if (this._cpu.GReg[CPU.VAL] == 1)
-                Console.WriteLine("{1}", this._cpu.GReg[CPU.TMP]);
+                Console.WriteLine(this._cpu.GReg[CPU.TMP]);
             else if (this._cpu.GReg[CPU.VAL] == 10)
                 CPU.end = 1;
         }
