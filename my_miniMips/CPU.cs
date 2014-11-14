@@ -55,13 +55,14 @@ namespace my_miniMips
             Decoder d = new Decoder();
             ALU a = new ALU(this);
 
-            while (!end)
+            while (end == 0)
             {
                 int instruction = this.fetch_instruction();
                 Instruction i = d.decode_instruction(instruction);
-                a.exec(i);
 
                 this.PC += 4;
+                a.exec(i);
+
                 if (PC >= _env.StackLimit)
                     break;
             }

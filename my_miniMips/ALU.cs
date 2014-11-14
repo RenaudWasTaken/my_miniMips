@@ -47,6 +47,15 @@ namespace my_miniMips
             _cpu.GReg[i.Rd] = (int) (_cpu.GReg[i.Rs] + (UInt32)_cpu.GReg[i.Rt]);
         }
 
+        public void jump(Instruction i)
+        {
+            int addr = (i.Jmp & 0x03FFFFFF) << 2;
+            int pc = this._cpu.PC & unchecked((int)0xF0000000);
+
+            addr = addr | pc;
+            this._cpu.PC = addr;
+        }
+
         public void syscall(Instruction i)
         {
             if (this._cpu.GReg[CPU.VAL] == 1)
