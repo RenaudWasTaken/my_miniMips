@@ -5,7 +5,7 @@ namespace my_miniMips
 {
     static class BinaryLoader
     {
-        public static void Loadbinary(Environment env, string path)
+        public static int Loadbinary(Environment env, string path)
         {
            if (!File.Exists(path))
                throw new Exception("File not found");
@@ -15,6 +15,8 @@ namespace my_miniMips
 
             for (int i = 0; i < datas.Length; i++)
                 env.RAM[i] = datas[i];
+
+            return datas.Length;
         }
     }
 }

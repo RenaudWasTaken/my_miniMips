@@ -19,6 +19,7 @@ namespace my_miniMips
         {
             GReg = new int[32];
             _env = env;
+            GReg[29] = env.StackBase;
         }
 
         public int GetSP()
@@ -28,11 +29,16 @@ namespace my_miniMips
 
         public void AddSP(int size)
         {
+            if (GetSP() - size <= _env.StackLimit)
+                throw new Exception("Stack overflow");
             GReg[29] -= size;
         }
 
         public void SubSP(int size)
         {
+            if (GetSP() + size > _env.StackBase)
+                throw  new Exception("Stack underflow");
+
             GReg[29] += size;
         }
     }

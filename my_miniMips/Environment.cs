@@ -16,6 +16,8 @@ namespace my_miniMips
             get { return RAM.Length - 1; }
         }
 
+        public int StackLimit { get; set; }
+
         public Environment()
         {
             RAM = new byte[64 * 1024]; //64Kib RAM
