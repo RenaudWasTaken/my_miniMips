@@ -60,7 +60,7 @@ namespace my_miniMips
         public void syscall(Instruction i)
         {
             if (this._cpu.GReg[CPU.VAL] == 1)
-                Console.WriteLine("{1}", this._cpu.GReg[CPU.TMP]);
+                Console.WriteLine(this._cpu.GReg[CPU.TMP]);
             else if (this._cpu.GReg[CPU.VAL] == 10)
                 CPU.end = 1;
         }
