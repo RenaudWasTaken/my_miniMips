@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BinaryLoader.cs" />
     <Compile Include="CPU.cs" />
+    <Compile Include="Decoder.cs" />
     <Compile Include="Environment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
