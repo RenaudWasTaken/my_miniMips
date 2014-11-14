@@ -20,6 +20,7 @@ namespace my_miniMips
             operations.Add(23, this.Subu);
             operations.Add(4, this.Beq);
             operations.Add(12, this.syscall);
+            operations.Add(2 , this.jump);
         }
         
         public void exec(Instruction i)
