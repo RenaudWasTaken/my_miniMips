@@ -26,9 +26,14 @@ namespace my_miniMips
             return GReg[29];
         }
 
-        public void MoveSP(int offset)
+        public void AddSP(int size)
         {
-            GReg[29] += offset;
+            GReg[29] -= size;
+        }
+
+        public void SubSP(int size)
+        {
+            GReg[29] += size;
         }
     }
 }
