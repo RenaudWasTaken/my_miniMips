@@ -8,22 +8,17 @@ namespace my_miniMips
 {
     class Decoder
     {
-        public void decode_instruction(int instruction, out int opcode, out int rs, out int rt, out int rd,
-                                       out int shamt, out int funct, out int imm, out int jmp)
+        public Instruction decode_instruction(int instruction)
         {
-            rd = 0; rs = 0; rt = 0;
-            opcode = this.get_opcode(instruction);
-
-            rd = this.get_rd(instruction);
-            rs = this.get_rs(instruction);
-            rt = this.get_rt(instruction); 
-
-            shamt = this.get_shamt(instruction);
-            funct = this.get_funct(instruction);
-
-            imm = this.get_imm(instruction);
-            jmp = this.get_jmp(instruction);
-     
+            return new Instruction(instruction,
+                get_opcode(instruction),
+                get_rs(instruction),
+                get_rt(instruction),
+                get_rd(instruction),
+                get_shamt(instruction),
+                get_funct(instruction),
+                get_imm(instruction),
+                get_jmp(instruction));
         }
 
         private int get_opcode(int instruction) { return instruction & unchecked((int)0xFA000000); }
