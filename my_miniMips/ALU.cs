@@ -45,5 +45,17 @@ namespace my_miniMips
         {
             _cpu.GReg[i.Rd] = (int) (_cpu.GReg[i.Rs] + (UInt32)_cpu.GReg[i.Rt]);
         }
+
+        public void Sub(Instruction i)
+        {
+            _cpu.GReg[i.Rd] = _cpu.GReg[i.Rs] - _cpu.GReg[i.Rt];
+        }
+
+        public void Subu(Instruction i)
+        {
+            _cpu.GReg[i.Rd] = _cpu.GReg[i.Rs] - _cpu.GReg[i.Rt];
+        }
+        
+        public 
     }
 }
