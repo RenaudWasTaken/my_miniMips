@@ -13,14 +13,22 @@ namespace my_miniMips
         public int HI { get; set; }
         public int LO { get; set; }
 
-        public CPU()
+        private Environment _env;
+
+        public CPU(Environment env)
         {
             GReg = new int[32];
+            _env = env;
         }
 
         public int GetSP()
         {
             return GReg[29];
+        }
+
+        public void MoveSP(int offset)
+        {
+            GReg[29] += offset;
         }
     }
 }

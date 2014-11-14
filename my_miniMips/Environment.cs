@@ -17,11 +17,11 @@ namespace my_miniMips
         {
             RAM = new byte[64 * 1024]; //64Kib RAM
             _stackBase = RAM.Length - 1;
+            CPU = new CPU(this);
         }
 
         public void stack_push(int data) 
         {
-            RAM[CPU.GetSP()]            
         }         
 
         public void stack_push(short data) 
@@ -32,10 +32,9 @@ namespace my_miniMips
 
         public void stack_push(byte[] data)
         {
-
             foreach (byte b in data)
             {
-                
+                       
             }
         }         
     }
