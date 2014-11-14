@@ -36,7 +36,7 @@ namespace my_miniMips
         }
 
         public void SubSP(int size)
-        {
+        {   
             if (GetSP() + size > _env.StackBase)
                 throw  new Exception("Stack underflow");
 
