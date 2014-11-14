@@ -51,6 +51,7 @@ namespace my_miniMips
         {
             int instruction, rs, rt, rd, shamt, funct, opcode, imm, jmp;
             Decoder d = new Decoder();
+
             while (true)
             {
                 instruction = this.fetch_instruction();
