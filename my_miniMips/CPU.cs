@@ -47,7 +47,11 @@ namespace my_miniMips
 
         public int fetch_instruction()
         {
-            return this._env.RAM[this.PC];
+            byte[] ins = new byte[4];
+            for (int i = 0; i < 4; i++)
+                ins[i] = _env.RAM[PC + i];
+
+            return BitConverter.ToInt32(ins, 0);
         }        
 
         public void run()

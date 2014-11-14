@@ -21,14 +21,14 @@ namespace my_miniMips
                 get_jmp(instruction));
         }
 
-        private int get_opcode(int instruction) { return instruction & unchecked((int)0xFA000000); }
-        private int get_rs    (int instruction) { return instruction & unchecked((int)0x03C00000); }
-        private int get_rt    (int instruction) { return instruction & unchecked((int)0x001F0000); }
-        private int get_rd    (int instruction) { return instruction & unchecked((int)0x0000F800); }
-        private int get_shamt (int instruction) { return instruction & unchecked((int)0x000007A0); }
-        private int get_funct (int instruction) { return instruction & unchecked((int)0x0000003F); }
-        private int get_imm   (int instruction) { return instruction & unchecked((int)0x000000FF); }
-        private int get_jmp   (int instruction) { return instruction & unchecked((int)0x01FFFFFF); }
+        private int get_opcode(int instruction) { return (instruction & unchecked((int)0xFA000000)) >> 26; }
+        private int get_rs    (int instruction) { return (instruction & unchecked((int)0x03C00000)) >> 21; }
+        private int get_rt    (int instruction) { return (instruction & unchecked((int)0x001F0000)) >> 16; }
+        private int get_rd    (int instruction) { return (instruction & unchecked((int)0x0000F800)) >> 11; }
+        private int get_shamt (int instruction) { return (instruction & unchecked((int)0x000007A0)) >> 6; }
+        private int get_funct (int instruction) { return (instruction & unchecked((int)0x0000003F)); }
+        private int get_imm   (int instruction) { return (instruction & unchecked((int)0x000000FF)); }
+        private int get_jmp   (int instruction) { return (instruction & unchecked((int)0x01FFFFFF)); }
 
     }
 }
