@@ -70,12 +70,13 @@ namespace my_miniMips
         
         public byte[] stack_pop_bytes(int size)
         {
+            int sp = CPU.GetSP();
+            CPU.SubSP(size);
+
             byte[] datas = new byte[size];
 
             for (int i = 0; i < size; i++)
-                datas[i] = RAM[CPU.GetSP() + i];
-
-            CPU.SubSP(size);
+                datas[i] = RAM[sp + i];
 
             return datas;
         }

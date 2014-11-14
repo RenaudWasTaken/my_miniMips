@@ -13,7 +13,7 @@ namespace my_miniMips
         public int HI { get; set; }
         public int LO { get; set; }
 
-        private Environment _env;
+        private readonly Environment _env;
 
         public CPU(Environment env)
         {
