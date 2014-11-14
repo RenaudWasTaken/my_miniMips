@@ -57,6 +57,12 @@ namespace my_miniMips
             _cpu.GReg[i.Rd] = _cpu.GReg[i.Rs] - _cpu.GReg[i.Rt];
         }
 
+        public void Beq(Instruction i)
+        {
+            if (_cpu.GReg[i.Rs] == _cpu.GReg[i.Rt])
+                _cpu.PC += 4*i.Imm;
+        }
+
         public void syscall(Instruction i)
         {
             if (this._cpu.GReg[CPU.VAL] == 1)
