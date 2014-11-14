@@ -14,8 +14,11 @@ namespace my_miniMips
             _cpu = cpu;
             operations.Add(32, this.Add);
             operations.Add(33, this.Addu);
-            operations.Add(9 , this.Addiu);
-            operations.Add(8 , this.Addi);
+            operations.Add(9, this.Addiu);
+            operations.Add(8, this.Addi);
+            operations.Add(22, this.Sub);
+            operations.Add(23, this.Subu);
+            operations.Add(4, this.Beq);
             operations.Add(12, this.syscall);
         }
         
