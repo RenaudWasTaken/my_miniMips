@@ -13,9 +13,10 @@ namespace my_miniMips
             Environment env = new Environment();
             env.StackLimit = BinaryLoader.Loadbinary(env, args[0]);
 
-            Console.WriteLine("{0} bytes loaded in RAM", env.StackLimit);
+            env.CPU.run();
 
-            //Loop here
+            Console.WriteLine("Done.");
+            Console.ReadLine();
         }
     }
 }
