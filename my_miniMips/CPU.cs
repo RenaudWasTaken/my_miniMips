@@ -1,9 +1,13 @@
 ﻿using System;
+using System.IO;
 
 namespace my_miniMips
 {
     class CPU
     {
+        public static int TMP = 8;
+        public static int VAL = 2;
+        public static int end = 0; 
         public int[] GReg { get; private set; }
         public int PC { get; set; }
         public int HI { get; set; }
@@ -51,7 +55,7 @@ namespace my_miniMips
             Decoder d = new Decoder();
             ALU a = new ALU(this);
 
-            while (true)
+            while (!end)
             {
                 int instruction = this.fetch_instruction();
                 Instruction i = d.decode_instruction(instruction);
