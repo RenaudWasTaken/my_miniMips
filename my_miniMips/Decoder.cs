@@ -22,7 +22,7 @@ namespace my_miniMips
         }
 
         private int get_opcode(int instruction) { return (instruction & unchecked((int)0xFA000000)) >> 26; }
-        private int get_rs    (int instruction) { return (instruction & unchecked((int)0x03C00000)) >> 21; }
+        private int get_rs    (int instruction) { return (instruction & unchecked((int)0x03E00000)) >> 21; }
         private int get_rt    (int instruction) { return (instruction & unchecked((int)0x001F0000)) >> 16; }
         private int get_rd    (int instruction) { return (instruction & unchecked((int)0x0000F800)) >> 11; }
         private int get_shamt (int instruction) { return (instruction & unchecked((int)0x000007A0)) >> 6; }
