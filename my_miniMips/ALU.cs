@@ -69,11 +69,7 @@ namespace my_miniMips
 
         public void jump(Instruction i)
         {
-            int addr = (i.Jmp & 0x03FFFFFF) << 2;
-            int pc = this._cpu.PC & unchecked((int)0xF0000000);
-
-            addr = addr | pc;
-            this._cpu.PC = addr;
+			_cpu.PC = (i.Jmp * 4);
         }
 
         public void syscall(Instruction i)

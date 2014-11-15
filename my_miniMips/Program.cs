@@ -11,7 +11,8 @@ namespace my_miniMips
         static void Main(string[] args)
         {
             Environment env = new Environment();
-            env.StackLimit = BinaryLoader.Loadbinary(env, args[0]);
+			//env.StackLimit = BinaryLoader.Loadbinary(env, args[0]);
+			env.StackLimit = BinaryLoader.Loadbinary(env, "../../lol");
 
             env.CPU.run();
 

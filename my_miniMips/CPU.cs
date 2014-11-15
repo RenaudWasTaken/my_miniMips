@@ -15,6 +15,7 @@ namespace my_miniMips
 
         private readonly Environment _env;
         private ALU _alu;
+		private Decoder _decoder;
 
         public CPU(Environment env)
         {
@@ -22,6 +23,7 @@ namespace my_miniMips
             _env = env;
             GReg[29] = env.StackBase;
             _alu = new ALU(this);
+			_decoder = new Decoder ();
         }
 
         public int GetSP()
@@ -56,16 +58,13 @@ namespace my_miniMips
 
         public void run()
         {
-            Decoder d = new Decoder();
-            ALU a = new ALU(this);
-
             while (end == 0)
             {
                 int instruction = this.fetch_instruction();
-                Instruction i = d.decode_instruction(instruction);
+				Instruction i = _decoder.decode_instruction(instruction);
 
                 this.PC += 4;
-                a.exec(i);
+				_alu.exec(i);
 
                 if (PC >= _env.StackLimit)
                     break;

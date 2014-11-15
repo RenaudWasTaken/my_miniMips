@@ -28,7 +28,6 @@ namespace my_miniMips
         private int get_shamt (int instruction) { return (instruction & unchecked((int)0x000007A0)) >> 6; }
         private int get_funct (int instruction) { return (instruction & unchecked((int)0x0000003F)); }
         private int get_imm   (int instruction) { return (instruction & unchecked((int)0x000000FF)); }
-        private int get_jmp   (int instruction) { return (instruction & unchecked((int)0x01FFFFFF)); }
-
+		private int get_jmp   (int instruction) { return (instruction & unchecked((int)0x0000FFFF)); }
     }
 }
